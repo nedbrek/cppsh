@@ -6,7 +6,10 @@ proc doRun {} {
 	set d [dict create]
 	dict set d Globals [.t.tGlobals get 1.0 end]
 	dict set d Main    [.t.tMain    get 1.0 end]
-	dict set d Flags   "-std=c++0x"
+
+	set flags [list]
+	lappend flags "-std=c++0x"
+	dict set d Flags $flags
 
 	set r [runCC $d]
 	set cppout [dGet $r CCOUT]
