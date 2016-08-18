@@ -40,5 +40,5 @@ pack [text  .t.tOut] -side top -anchor nw -in .t.fL
 # right side
 pack [frame .t.fR] -side left -anchor nw
 
-pack [button .t.bRun -text "Run" -command doRun] -side top -anchor n
+pack [button .t.bRun -text "Run" -command doRun] -side top -anchor n -in .t.fR
 
