@@ -35,19 +35,25 @@ wm withdraw .
 toplevel .t
 
 # left side
-pack [frame .t.fL] -side left -anchor nw
+pack [ttk::panedwindow .t.splitTB -orient vertical] -expand 1 -fill both -side left
 
 # globals
-pack [label .t.lGlobals -text "Global"] -side top -anchor nw -in .t.fL
-pack [text  .t.tGlobals -height 12] -side top -anchor nw -in .t.fL
+frame .t.fGlobals
+pack [label .t.lGlobals -text "Global"] -side top -anchor nw -in .t.fGlobals
+pack [text  .t.tGlobals -height 12] -side top -anchor nw -in .t.fGlobals -expand 1 -fill both
+.t.splitTB add .t.fGlobals
 
 # main
-pack [label .t.lMain -text "Main"] -side top -anchor nw -in .t.fL
-pack [text  .t.tMain] -side top -anchor nw -in .t.fL
+frame .t.fMain
+pack [label .t.lMain -text "Main"] -side top -anchor nw -in .t.fMain
+pack [text  .t.tMain] -side top -anchor nw -in .t.fMain -expand 1 -fill both
+.t.splitTB add .t.fMain
 
 # output
-pack [label .t.lOut -text "Output"] -side top -anchor nw -in .t.fL
-pack [text  .t.tOut] -side top -anchor nw -in .t.fL
+frame .t.fOutput
+pack [label .t.lOut -text "Output"] -side top -anchor nw -in .t.fOutput
+pack [text  .t.tOut] -side top -anchor nw -in .t.fOutput -expand 1 -fill both
+.t.splitTB add .t.fOutput
 
 # right side
 pack [frame .t.fR] -side left -anchor nw
