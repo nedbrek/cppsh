@@ -40,19 +40,22 @@ pack [ttk::panedwindow .t.splitTB -orient vertical] -expand 1 -fill both -side l
 # globals
 frame .t.fGlobals
 pack [label .t.lGlobals -text "Global"] -side top -anchor nw -in .t.fGlobals
-pack [text  .t.tGlobals -height 12] -side top -anchor nw -in .t.fGlobals -expand 1 -fill both
+pack [text  .t.tGlobals -height 12 -yscrollcommand [list .t.sbGlobals set]] -side left -anchor nw -in .t.fGlobals -expand 1 -fill both
+pack [scrollbar .t.sbGlobals -orient vertical -command [list .t.tGlobals yview]] -side left -fill y -in .t.fGlobals
 .t.splitTB add .t.fGlobals
 
 # main
 frame .t.fMain
 pack [label .t.lMain -text "Main"] -side top -anchor nw -in .t.fMain
-pack [text  .t.tMain] -side top -anchor nw -in .t.fMain -expand 1 -fill both
+pack [text  .t.tMain -yscrollcommand [list .t.sbMain set]] -side left -anchor nw -in .t.fMain -expand 1 -fill both
+pack [scrollbar .t.sbMain -orient vertical -command [list .t.tMain yview]] -side left -fill y -in .t.fMain
 .t.splitTB add .t.fMain
 
 # output
 frame .t.fOutput
 pack [label .t.lOut -text "Output"] -side top -anchor nw -in .t.fOutput
-pack [text  .t.tOut] -side top -anchor nw -in .t.fOutput -expand 1 -fill both
+pack [text  .t.tOut -yscrollcommand [list .t.sbOut set]] -side left -anchor nw -in .t.fOutput -expand 1 -fill both
+pack [scrollbar .t.sbOut -orient vertical -command [list .t.tOut yview]] -side left -fill y -in .t.fOutput
 .t.splitTB add .t.fOutput
 
 # right side
