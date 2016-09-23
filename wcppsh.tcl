@@ -2,10 +2,31 @@ package require Tk
 
 source cppsh.tcl
 
+set stdInc {
+	"algorithm"
+	"cstdio"
+	"cstdlib"
+	"cstring"
+	"iostream"
+	"map"
+	"sstream"
+	"string"
+	"vector"
+}
+
 proc doRun {} {
 	set d [dict create]
 
 	set globals ""
+
+	set i 0
+	foreach inc $::stdInc {
+		if {[.t.lbInc selection includes $i]} {
+			append globals "#include <$inc>\n"
+		}
+		incr i
+	}
+
 	if {$::cbNsStd} {
 		append globals "using namespace std;\n"
 	}
@@ -66,4 +87,14 @@ pack [button .t.bRun -text "Run" -command doRun] -side top -anchor n -in .t.fR
 
 # namespace std
 pack [checkbutton .t.cbNsStd -text "namespace std" -variable cbNsStd] -anchor n -in .t.fR; .t.cbNsStd select
+
+# includes
+pack [label .t.lInc -text "Includes"] -anchor n -in .t.fR
+pack [listbox .t.lbInc -selectmode multiple -listvariable stdInc] -anchor n -in .t.fR
+
+set i 0
+foreach inc $stdInc {
+	.t.lbInc selection set $i
+	incr i
+}
 
