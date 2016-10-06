@@ -90,7 +90,7 @@ pack [checkbutton .t.cbNsStd -text "namespace std" -variable cbNsStd] -anchor n 
 
 # includes
 pack [label .t.lInc -text "Includes"] -anchor n -in .t.fR
-pack [listbox .t.lbInc -selectmode multiple -listvariable stdInc] -anchor n -in .t.fR
+pack [listbox .t.lbInc -selectmode multiple -listvariable stdInc -exportselection 0] -anchor n -in .t.fR
 
 set i 0
 foreach inc $stdInc {
